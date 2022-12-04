@@ -1,0 +1,126 @@
+#cards {
+  /* 設定卡片外層的div */
+  display: flex;
+  /* flex容器下的子元素都是flex-item */
+  flex-wrap: wrap;
+  /* 換行 */
+  width: 85%;
+  /* 新增：為了跟header對齊 */
+  margin: 0 auto;
+  /* 新增：置中 */
+}
+
+.card {
+  /* 卡片在容器裡的排版:4行，每一行13張 */
+  box-sizing: border-box;
+
+  flex: 7% 1 1;
+  /* 每個item分配到容器寬度，新增：中間的0改成1 因卡片需要分配剩餘空間 */
+  height: 8vw;
+  /* 依視窗的寬度比例變化 */
+  border: 2px solid #e0e0e0;
+  margin: 2px;
+  /* 卡片本身內部的排版 */
+  display: flex;
+  flex-direction: column;
+  /* 從上到下、左到右 */
+  justify-content: space-around;
+  /* 左右兩邊尚有空間且均分 */
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+  /* 橫向置中 */
+}
+
+/* 第一個數字（上面） */
+.card p {
+  margin: 3px;
+  font-size: 10px;
+}
+
+/* 第二個數字（下面） */
+.card p:last-child {
+  transform: rotate(180deg);
+  /* 角度 */
+}
+
+/* 牌卡背面 */
+.back {
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+}
+
+/* 兩張卡牌配對後的樣式變化 */
+.paired {
+  background-color: #dae0e3;
+}
+
+#header {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 85%;
+  align-items: flex-end;
+  /* border: 2px solid tomato 看清div到哪 */
+}
+
+#header .title {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#header .title img {
+  max-width: 3em;
+}
+
+#header .title h2 {
+  padding-left: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+
+#header .tried {
+  margin-top: 0;
+}
+
+/* 卡牌配對錯的動畫 */
+@keyframes wrongAnimation {
+  to {
+    border: 2px solid #ffd54f;
+  }
+}
+
+.wrong {
+  animation: wrongAnimation 0.2s;
+  animation-iteration-count: 5;
+  /* 動畫要播幾次的次數 */
+}
+
+/* 遊戲結束 */
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+
+.completed>p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.completed>p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
